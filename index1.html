@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="randomInfoApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Information Generator</title>
+  <h1>CalKH</h1>
+
+  <style>
+    h1 {
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: ;
+    }
+    body {
+      background-color: rgb(194, 39, 52);
+    }
+  </style>
+</head>
+<body>
+  <ng-controller="randomInfoCtrl">
+    <h2>First Name </h2>
+    <input type="text" ng-model="firstName" placeholder="Rith">
+
+    <h2>Last Name</h2>
+    <input type="text" ng-model="lastName" placeholder="Sinawatra">
+
+    <button ng-click="generateRandomInfo()">Generate Random Info</button>
+
+    <hr>
+
+    <h3>Generated Information:</h3>
+
+    <ul>
+      <li>Full Name: {{firstName + " " + lastName}}</li>
+      <li>Age: {{generateRandomNumber(18, 80)}}</li>
+      <li>Email: {{generateRandomEmail(firstName, lastName)}}</li>
+      <li>Occupation: {{generateRandomOccupation()}}</li>
+      <li>Hobby: {{generateRandomHobby()}}</li>
+    </ul>
+  </ng-controller>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script>
+    // Define the AngularJS application and controller
+    var app = angular.module('randomInfoApp', []);
+
+    app.controller('randomInfoCtrl', function ($scope) {
+      // Define functions to generate random information
+      $scope.generateRandomNumber = function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+
+      $scope.generateRandomEmail = function (firstName, lastName) {
+        return firstName + "." + lastName + "@" + ["gmail.com", "yahoo.com", "hotmail.com"][Math.floor(Math.random() * 3)];
+      };
+
+      $scope.generateRandomOccupation = function () {
+        return ["Developer", "Doctor", "Teacher", "Artist", "Musician"][Math.floor(Math.random() * 5)];
+      };
+
+      $scope.generateRandomHobby = function () {
+        return ["Reading", "Sports", "Gaming", "Music", "Travel"][Math.floor(Math.random() * 5)];
+      };
+    });
+  </script>
+</body>
+</html>

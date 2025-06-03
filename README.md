@@ -1,2 +1,10 @@
-# RandomINFOgenerator
-Just few simple code to generate random information of the user in the website. In the future, personally I want to expand the feature as well as the information to make it more convenient to the user. 
+Features :
+
+    <ul>
+      <li>Full Name: {{firstName + " " + lastName}}</li>
+      <li>Age: {{generateRandomNumber(18, 80)}}</li>
+      <li>Email: {{generateRandomEmail(firstName, lastName)}}</li>
+      <li>Occupation: {{generateRandomOccupation()}}</li>
+      <li>Hobby: {{generateRandomHobby()}}</li>
+    </ul> 
+
